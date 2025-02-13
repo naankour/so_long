@@ -17,6 +17,18 @@
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
 
+typedef struct s_map
+{
+	char	**grid;
+	int		grid_lenght;
+	int		grid_height;
+}			t_map;
 
+typedef struct s_game
+{
+	int		ac;
+	char	**av;
+	t_map	*map;
+}			t_game;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: naankour <naankour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:49:34 by naankour          #+#    #+#             */
-/*   Updated: 2025/02/11 16:46:13 by naankour         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:54:00 by naankour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # endif
 
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *str);
+// size_t	ft_strlen(const char *str);
 int		ft_strchr_2(const char *s, int c);
 char	*ft_strjoin_2(char *s1, char *s2);
 char	*ft_strdup_2(char *src);

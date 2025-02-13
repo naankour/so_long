@@ -6,13 +6,13 @@
 /*   By: naankour <naankour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:49:25 by naankour          #+#    #+#             */
-/*   Updated: 2025/02/11 16:46:53 by naankour         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:53:27 by naankour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+static size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
