@@ -6,7 +6,12 @@ LIBFT = library/libft/libft.a
 MLX_FLAGS = -L./minilibx-linux -lmlx -lbsd -lXext -lX11 -lm
 LIBFT_FLAGS = -L./library/libft -lft
 
-SRCS	=	so_long.c
+SRCS	=	srcs/so_long.c\
+			srcs/parsing_map.c\
+			srcs/parsing_path.c\
+			srcs/malloc_map.c\
+			srcs/error.c\
+			srcs/free.c\
 
 OBJS = $(SRCS:.c=.o)
 
