@@ -17,19 +17,26 @@
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
 
+# define ERROR_ITEM	"Map must have 1 'P', 1 'E', and at least 1 'C'."
+# define ERROR_PATH	"Invalid path, some collectibles or exit are unreachable."
+
 typedef struct s_map
 {
 	char	**grid;
 	char	**grid_cpy;
 	int		grid_lenght;
 	int		grid_height;
+	int		collectible;
 }			t_map;
 
 typedef struct s_game
 {
+	t_map	*map;
 	int		ac;
 	char	**av;
-	t_map	*map;
+	void	*mlx;
+	void	*mlx_win;
+	void	*img;
 }			t_game;
 
 void	is_ber(char	*file_path);

@@ -76,7 +76,7 @@ void	check_grid_cpy(t_game *game)
 		{
 			if (game->map->grid_cpy[i][j] == 'E'
 				|| game->map->grid_cpy[i][j] == 'C')
-				ft_error_parsing(game, "Invalid path : some collectibles or exit are unreachable");
+				ft_error_parsing(game, ERROR_PATH);
 			j++;
 		}
 		i++;

@@ -57,12 +57,11 @@ void	check_map_items(t_game *game)
 	int	j;
 	int	exit;
 	int	player;
-	int	collectible;
 
 	i = -1;
 	exit = 0;
 	player = 0;
-	collectible = 0;
+	game->map->collectible = 0;
 	while (game->map->grid[++i] != NULL)
 	{
 		j = -1;
@@ -73,11 +72,12 @@ void	check_map_items(t_game *game)
 			else if (game->map->grid[i][j] == 'E')
 				exit++;
 			else if (game->map->grid[i][j] == 'C')
-				collectible++;
+				game->map->collectible++;
 		}
 	}
-	if (player > 1 || player < 1 || exit > 1 || exit < 1 || collectible < 1)
-		ft_error_parsing(game, "Map must have 1 'P', 1 'E', and at least 1 'C'.");
+	if (player > 1 || player < 1 || exit > 1 || exit < 1
+		|| game->map->collectible < 1)
+		ft_error_parsing(game, ERROR_ITEM);
 }
 
 void	check_map_right_left_borders(t_game *game)
