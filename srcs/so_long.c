@@ -64,7 +64,7 @@ int	main(int ac, char **av)
 		ft_parsing(game);
 		game->mlx = mlx_init();
 		game->mlx_win = mlx_new_window(game->mlx, 800, 600, "so_long");
-		game->img = mlx_xpm_file_to_image(game->mlx, "assets/exit.xpm", &img_width, &img_height);
+		game->img = mlx_xpm_file_to_image(game->mlx, "assets/wall1.xpm", &img_width, &img_height);
 		if (!game->img)
 		{
 			ft_printf("Erreur : Impossible de charger l'image.\n");
