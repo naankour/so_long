@@ -39,6 +39,7 @@ void	ft_parsing(t_game *game)
 	find_player_position(game);
 	check_grid_cpy(game);
 }
+
 void	load_img(t_game *game)
 {
 	int	img_width;
@@ -79,6 +80,7 @@ void	draw_map(t_game *game)
 		}
 		i++;
 	}
+	ft_printf("move count = %i\n", game->move_count++);
 }
 
 void	find_player_position2(t_game *game, int *player_x, int *player_y)
@@ -96,6 +98,7 @@ void	find_player_position2(t_game *game, int *player_x, int *player_y)
 		(*player_y)++;
 	}
 }
+
 void	player_move_up(t_game *game)
 {
 	int	player_x;
@@ -108,8 +111,8 @@ void	player_move_up(t_game *game)
 		return;
 	if (game->map->grid[player_y - 1][player_x] == 'E' && game->map->collectible == 0)
 	{
-		ft_printf("Congratulations! You reached the exit! ❄️\n");
-		close_game(game);
+		ft_printf("❄️  Congratulations! You reached the exit! ❄️\n");
+		close_game_win(game);
 	}
 	if (game->map->grid[player_y - 1][player_x] == 'C')
 		game->map->collectible--;
@@ -130,8 +133,8 @@ void	player_move_down(t_game *game)
 		return;
 	if (game->map->grid[player_y + 1][player_x] == 'E' && game->map->collectible == 0)
 	{
-		ft_printf("Congratulations! You reached the exit! ❄️\n");
-		close_game(game);
+		ft_printf("❄️  Congratulations! You reached the exit! ❄️\n");
+		close_game_win(game);
 	}
 	if (game->map->grid[player_y + 1][player_x] == 'C')
 		game->map->collectible--;
@@ -152,8 +155,8 @@ void	player_move_left(t_game *game)
 		return;
 	if (game->map->grid[player_y][player_x - 1] == 'E' && game->map->collectible == 0)
 	{
-		ft_printf("Congratulations! You reached the exit! ❄️\n");
-		close_game(game);
+		ft_printf("❄️  Congratulations! You reached the exit! ❄️\n");
+		close_game_win(game);
 	}
 	if (game->map->grid[player_y][player_x - 1] == 'C')
 		game->map->collectible--;
@@ -174,8 +177,8 @@ void	player_move_right(t_game *game)
 		return;
 	if (game->map->grid[player_y][player_x + 1] == 'E' && game->map->collectible == 0)
 	{
-		ft_printf("Congratulations! You reached the exit! ❄️\n");
-		close_game(game);
+		ft_printf("❄️  Congratulations! You reached the exit! ❄️\n");
+		close_game_win(game);
 	}
 	if (game->map->grid[player_y][player_x + 1] == 'C')
 		game->map->collectible--;
@@ -198,108 +201,6 @@ int	key_hook(int keycode, t_game *game)
 		player_move_right(game);
 	return (0);
 }
-// int	key_hook(int keycode, t_game *game)
-// {
-// 	int	player_x;
-// 	int	player_y;
-// 	int target_x;
-// 	int target_y;
-
-// 	find_player_position2(game, &player_x, &player_y);
-// 	target_x = player_x;
-// 	target_y = player_y;
-// 	if (keycode == ESC)
-// 		close_game(game);
-// 	if (keycode == W)
-// 		target_y -= 1;
-// 	else if (keycode == A)
-// 		target_x -= 1;
-// 	else if (keycode == S)
-// 		target_y += 1;
-// 	else if (keycode == D)
-// 		target_x += 1;
-// 	if (game->map->grid[target_y][target_x] == 'E')
-// 	{
-// 		if (game->map->collectible > 0)
-// 			return (0);
-// 		else
-// 		{
-// 			ft_printf("❄️ Congratulations! You escaped the snowy labyrinth!❄️\n");
-// 			close_game_win(game);
-// 		}
-// 	}
-// 	if (game->map->grid[target_y][target_x] == '0' || game->map->grid[target_y][target_x] == 'C')
-// 	{
-// 		if (game->map->grid[target_y][target_x] == 'C')
-// 			game->map->collectible--;
-// 		game->map->grid[player_y][player_x] = '0';
-// 		game->map->grid[target_y][target_x] = 'P';
-// 		draw_map(game);
-// 	}
-// 	return (0);
-// }
-// int	key_hook(int keycode, t_game *game)
-// {
-// 	int	player_x;
-// 	int	player_y;
-
-// 	find_player_position2(game, &player_x, &player_y);
-// 	if (keycode == ESC)
-// 		close_game(game);
-// 	if (keycode == W)
-// 	{
-// 		if (game->map->grid[player_y - 1][player_x] == '0' ||
-// 			game->map->grid[player_y - 1][player_x] == 'C')
-// 		{
-// 			if (game->map->grid[player_y - 1][player_x] == 'C')
-// 				game->map->collectible--;
-// 			ft_printf("%d\n", game->map->collectible);
-// 			game->map->grid[player_y][player_x] = '0';
-// 			game->map->grid[player_y - 1][player_x] = 'P';
-// 			draw_map(game);
-// 		}
-// 	}
-// 	if (keycode == S)
-// 	{
-// 		if (game->map->grid[player_y + 1][player_x] == '0' ||
-// 			game->map->grid[player_y + 1][player_x] == 'C')
-// 		{
-// 			if (game->map->grid[player_y + 1][player_x] == 'C')
-// 				game->map->collectible--;
-// 			ft_printf("%d\n", game->map->collectible);
-// 			game->map->grid[player_y][player_x] = '0';
-// 			game->map->grid[player_y + 1][player_x] = 'P';
-// 			draw_map(game);
-// 		}
-// 	}
-// 	if (keycode == D)
-// 	{
-// 		if (game->map->grid[player_y][player_x + 1] == '0' ||
-// 			game->map->grid[player_y][player_x + 1] == 'C')
-// 		{
-// 			if (game->map->grid[player_y][player_x + 1] == 'C')
-// 				game->map->collectible--;
-// 			ft_printf("%d\n", game->map->collectible);
-// 			game->map->grid[player_y][player_x] = '0';
-// 			game->map->grid[player_y][player_x + 1] = 'P';
-// 			draw_map(game);
-// 		}
-// 	}
-// 	if (keycode == A)
-// 	{
-// 		if (game->map->grid[player_y][player_x - 1] == '0' ||
-// 			game->map->grid[player_y][player_x - 1] == 'C')
-// 		{
-// 			if (game->map->grid[player_y][player_x - 1] == 'C')
-// 				game->map->collectible--;
-// 			ft_printf("%d\n", game->map->collectible);
-// 			game->map->grid[player_y][player_x] = '0';
-// 			game->map->grid[player_y][player_x - 1] = 'P';
-// 			draw_map(game);
-// 		}
-// 	}
-// 	return (0);
-// }
 
 void	free_img(t_game *game)
 {
@@ -359,30 +260,9 @@ int	main(int ac, char **av)
 		game->mlx = mlx_init();
 		game->win = mlx_new_window(game->mlx, game->map->grid_lenght*64, game->map->grid_height*64, "so_long");
 		load_img(game);
-		ft_printf("%d\n", game->map->collectible);
 		mlx_key_hook(game->win, key_hook, game);
 		mlx_hook(game->win, 17, 0, close_game, game);
 		mlx_loop(game->mlx);
 	}
 	return (0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

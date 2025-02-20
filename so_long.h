@@ -46,7 +46,7 @@ typedef struct s_game
 	void	*img_collectible;
 	void	*img_wall;
 	void	*img_floor;
-	int		collected; //compteur pour les collectibles deja collectes
+	int		move_count;
 }			t_game;
 
 void	is_ber(char	*file_path);
