@@ -19,6 +19,11 @@
 
 # define ERROR_ITEM	"Map must have 1 'P', 1 'E', and at least 1 'C'."
 # define ERROR_PATH	"Invalid path, some collectibles or exit are unreachable."
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
 
 typedef struct s_map
 {
@@ -35,8 +40,13 @@ typedef struct s_game
 	int		ac;
 	char	**av;
 	void	*mlx;
-	void	*mlx_win;
-	void	*img;
+	void	*win;
+	void	*img_player;
+	void	*img_exit;
+	void	*img_collectible;
+	void	*img_wall;
+	void	*img_floor;
+	int		collected; //compteur pour les collectibles deja collectes
 }			t_game;
 
 void	is_ber(char	*file_path);
@@ -60,4 +70,11 @@ void	ft_error_fd(int fd);
 void	ft_error_parsing(t_game *game, const char *str);
 
 void	free_tab(char **tab);
+
+void	load_img(t_game *game);
+void	draw_map(t_game *game);
+void	free_img(t_game *game);
+int		close_game(t_game *game);
+int		close_game_win(t_game *game);
+
 #endif
