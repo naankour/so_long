@@ -70,11 +70,21 @@ void	ft_error_fd(int fd);
 void	ft_error_parsing(t_game *game, const char *str);
 
 void	free_tab(char **tab);
+void	free_img(t_game *game);
 
 void	load_img(t_game *game);
 void	draw_map(t_game *game);
 void	free_img(t_game *game);
 int		close_game(t_game *game);
 int		close_game_win(t_game *game);
+
+void	player_move_right(t_game *game);
+void	player_move_left(t_game *game);
+void	player_move_down(t_game *game);
+void	player_move_up(t_game *game);
+
+int		key_hook(int keycode, t_game *game);
+
+void	find_player_position2(t_game *game, int *player_x, int *player_y);
 
 #endif

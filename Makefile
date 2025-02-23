@@ -11,7 +11,8 @@ SRCS	=	srcs/so_long.c\
 			srcs/parsing_path.c\
 			srcs/malloc_map.c\
 			srcs/error.c\
-			srcs/free.c\
+			srcs/free_and_close.c\
+			srcs/player_move.c\
 
 OBJS = $(SRCS:.c=.o)
 

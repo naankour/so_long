@@ -83,3 +83,15 @@ void	check_grid_cpy(t_game *game)
 	}
 	free_tab(game->map->grid_cpy);
 }
+
+void	ft_parsing(t_game *game)
+{
+	is_rectangle(game);
+	only_valid_chars(game);
+	check_map_items(game);
+	check_map_right_left_borders(game);
+	check_map_top_bottom_borders(game);
+	ft_grid_copy(game);
+	find_player_position(game);
+	check_grid_cpy(game);
+}
