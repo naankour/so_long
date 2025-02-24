@@ -7,12 +7,14 @@ MLX_FLAGS = -L./minilibx-linux -lmlx -lbsd -lXext -lX11 -lm
 LIBFT_FLAGS = -L./library/libft -lft
 
 SRCS	=	srcs/so_long.c\
-			srcs/parsing_map.c\
-			srcs/parsing_path.c\
-			srcs/malloc_map.c\
 			srcs/error.c\
 			srcs/free_and_close.c\
+			srcs/malloc_map.c\
+			srcs/parsing_map.c\
+			srcs/parsing_path.c\
 			srcs/player_move.c\
+			srcs/player_move2.c\
+			srcs/show_map.c\
 
 OBJS = $(SRCS:.c=.o)
 

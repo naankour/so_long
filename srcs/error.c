@@ -16,7 +16,7 @@ void	ft_error_fd(int fd)
 {
 	if (fd < 0)
 	{
-		ft_printf("Error: Enable to open the file.");
+		ft_printf("Error: Enable to open the file.\n");
 		exit(1);
 	}
 	return ;

@@ -18,6 +18,8 @@ void	is_rectangle(t_game *game)
 	int	actual_lenght;
 
 	game->map->grid_lenght = ft_strlen(game->map->grid[0]);
+	if (game->map->grid_height == 1)
+		ft_error_parsing(game, "The map must be rectangular.");
 	if (game->map->grid_lenght == game->map->grid_height)
 		ft_error_parsing(game, "The map must be rectangular.");
 	i = 0;
