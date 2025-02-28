@@ -32,40 +32,49 @@ void	load_img(t_game *game)
 	draw_map(game);
 }
 
-void	put_img(t_game *game, int i)
+void	put_img(t_game *game, int i, int j)
 {
-	int	j;
+	int	screen_x;
+	int	screen_y;
 
-	j = 0;
-	while (game->map->grid[i][j])
-	{
-		if (game->map->grid[i][j] == 'P')
-			mlx_put_image_to_window(game->mlx, game->win,
-				game->img_player, j * 64, i * 64);
-		else if (game->map->grid[i][j] == 'E')
-			mlx_put_image_to_window(game->mlx, game->win,
-				game->img_exit, j * 64, i * 64);
-		else if (game->map->grid[i][j] == 'C')
-			mlx_put_image_to_window(game->mlx, game->win,
-				game->img_collectible, j * 64, i * 64);
-		else if (game->map->grid[i][j] == '1')
-			mlx_put_image_to_window(game->mlx, game->win,
-				game->img_wall, j * 64, i * 64);
-		else if (game->map->grid[i][j] == '0')
-			mlx_put_image_to_window(game->mlx, game->win,
-				game->img_floor, j * 64, i * 64);
-		j++;
-	}
+	if (i < 0 || i >= game->map->grid_height || j < 0
+		|| j >= game->map->grid_lenght)
+		return ;
+	screen_x = (j - game->cam_x) * 64;
+	screen_y = (i - game->cam_y) * 64;
+	if (game->map->grid[i][j] == 'P')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->img_player, screen_x, screen_y);
+	else if (game->map->grid[i][j] == 'E')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->img_exit, screen_x, screen_y);
+	else if (game->map->grid[i][j] == 'C')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->img_collectible, screen_x, screen_y);
+	else if (game->map->grid[i][j] == '1')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->img_wall, screen_x, screen_y);
+	else if (game->map->grid[i][j] == '0')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->img_floor, screen_x, screen_y);
 }
 
 void	draw_map(t_game *game)
 {
 	int	i;
+	int	j;
 
-	i = 0;
-	while (game->map->grid[i])
+	i = game->cam_y;
+	while (i < game->cam_y + game->cam_height && i < game->map->grid_height)
 	{
-		put_img(game, i);
+		j = game->cam_x;
+		while (j < game->cam_x + game->cam_width && j < game->map->grid_lenght)
+		{
+			if (i >= 0 && i < game->map->grid_height
+				&& j >= 0 && j < game->map->grid_lenght)
+				put_img(game, i, j);
+			j++;
+		}
 		i++;
 	}
 	ft_printf("move count = %i\n", game->move_count++);

@@ -35,6 +35,7 @@ void	read_map(const char *file_path, t_game *game)
 	game->map->grid = malloc(sizeof(char *) * (i + 1));
 	if (!game->map->grid)
 		return ;
+	game->map->grid_cpy = NULL;
 	read_map2(file_path, game);
 }
 

@@ -50,13 +50,17 @@ typedef struct s_game
 	int		exit_x;
 	int		exit_y;
 	int		is_exit;
+	int		cam_x;
+	int		cam_y;
+	int		cam_width;
+	int		cam_height;
 }			t_game;
 
 //PARSING
 void	is_ber(char	*file_path);
-void	ft_parsing(t_game *game);
 void	read_map(const char *file_path, t_game *game);
 void	read_map2(const char *file_path, t_game *game);
+void	ft_parsing(t_game *game);
 void	is_rectangle(t_game *game);
 void	only_valid_chars(t_game *game);
 void	check_map_items(t_game *game);
@@ -73,8 +77,9 @@ void	ft_error_parsing(t_game *game, const char *str);
 void	free_tab(char **tab);
 void	free_img(t_game *game);
 //GAME
+void	init_game(t_game *game);
 void	load_img(t_game *game);
-void	put_img(t_game *game, int i);
+void	put_img(t_game *game, int i, int j);
 void	draw_map(t_game *game);
 void	find_player_position2(t_game *game, int *player_x, int *player_y);
 void	player_move_right(t_game *game, int player_x, int player_y);
@@ -85,4 +90,8 @@ void	update_map_after_move(t_game *game, int player_x, int player_y);
 int		key_hook(int keycode, t_game *game);
 int		close_game(t_game *game);
 int		close_game_win(t_game *game);
+//CAM
+void	init_cam(t_game *game);
+void	update_cam_player(t_game *game);
+
 #endif

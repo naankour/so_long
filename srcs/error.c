@@ -24,14 +24,14 @@ void	ft_error_fd(int fd)
 
 void	ft_error_parsing(t_game *game, const char *str)
 {
-	if (game)
-	{
-		if (game->map->grid_cpy)
-			free_tab(game->map->grid_cpy);
+	if (game && game->map && game->map->grid_cpy)
+		free_tab(game->map->grid_cpy);
+	if (game && game->map && game->map->grid)
 		free_tab(game->map->grid);
+	if (game && game->map)
 		free(game->map);
+	if (game)
 		free(game);
-	}
 	ft_printf("Error : %s\n", str);
 	exit(1);
 }

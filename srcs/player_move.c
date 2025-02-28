@@ -48,6 +48,7 @@ void	player_move_up(t_game *game, int player_x, int player_y)
 		game->map->collectible--;
 	game->map->grid[player_y - 1][player_x] = 'P';
 	update_map_after_move(game, player_x, player_y);
+	update_cam_player(game);
 }
 
 void	player_move_down(t_game *game, int player_x, int player_y)
@@ -72,6 +73,7 @@ void	player_move_down(t_game *game, int player_x, int player_y)
 		game->map->collectible--;
 	game->map->grid[player_y + 1][player_x] = 'P';
 	update_map_after_move(game, player_x, player_y);
+	update_cam_player(game);
 }
 
 void	player_move_left(t_game *game, int player_x, int player_y)
@@ -96,6 +98,7 @@ void	player_move_left(t_game *game, int player_x, int player_y)
 		game->map->collectible--;
 	game->map->grid[player_y][player_x - 1] = 'P';
 	update_map_after_move(game, player_x, player_y);
+	update_cam_player(game);
 }
 
 void	player_move_right(t_game *game, int player_x, int player_y)
@@ -120,4 +123,5 @@ void	player_move_right(t_game *game, int player_x, int player_y)
 		game->map->collectible--;
 	game->map->grid[player_y][player_x + 1] = 'P';
 	update_map_after_move(game, player_x, player_y);
+	update_cam_player(game);
 }
