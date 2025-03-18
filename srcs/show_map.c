@@ -29,6 +29,9 @@ void	load_img(t_game *game)
 			&img_width, &img_height);
 	game->img_floor = mlx_xpm_file_to_image(game->mlx, "assets/floor.xpm",
 			&img_width, &img_height);
+	if (!game->img_player || !game->img_exit || !game->img_collectible
+		|| !game->img_wall || !game->img_floor)
+			ft_error_parsing(game, "Textures are not loaded");
 	draw_map(game);
 }
 
