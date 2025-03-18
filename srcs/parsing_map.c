@@ -12,21 +12,21 @@
 
 #include "../so_long.h"
 
-void	is_rectangle(t_game *game)
+void is_rectangle(t_game *game)
 {
-	int	i;
-	int	actual_lenght;
+	int i;
+	int actual_length;
 
 	game->map->grid_lenght = ft_strlen(game->map->grid[0]);
-	if (game->map->grid_height == 1)
+	if (game->map->grid_height <= 1)
 		ft_error_parsing(game, "The map must be rectangular.");
 	if (game->map->grid_lenght == game->map->grid_height)
 		ft_error_parsing(game, "The map must be rectangular.");
-	i = 0;
-	actual_lenght = ft_strlen(game->map->grid[i]);
+	i = 1;
 	while (i < game->map->grid_height)
 	{
-		if (actual_lenght != game->map->grid_lenght)
+		actual_length = ft_strlen(game->map->grid[i]);
+		if (actual_length != game->map->grid_lenght)
 			ft_error_parsing(game, "The map must be rectangular.");
 		i++;
 	}
